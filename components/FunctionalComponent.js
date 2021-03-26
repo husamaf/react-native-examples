@@ -9,7 +9,7 @@ const FunctionalComponent = (props) => {
   let c = useRef(0)
 
   useEffect(() => {
-    console.log("I just re-rendered!")
+    console.log("I just rendered!")
   })
 
   const buttonHandler = () => {
