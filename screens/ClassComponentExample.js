@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
 
-class ClassComponent extends React.Component{
+class ClassComponentExample extends React.Component{
 
   constructor(props) {
     super(props);
@@ -30,7 +30,7 @@ class ClassComponent extends React.Component{
   render() {
     return (
       <View style={styles.root}>
-        <Text style={styles.title}>This is a Class Component</Text>
+        <Text style={styles.title}>Testing variables in a Class Component</Text>
         <Text>{`This is a: ${this.a}`}</Text>
         <Text>{`This is b: ${this.b}`}</Text>
         <Text>{`This is toggleState: ${this.state.toggleState}`}</Text>
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
   buttonContainer: {marginTop: 80}
 });
 
-export default ClassComponent;
+export default ClassComponentExample;
