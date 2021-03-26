@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
 
 const Child = props => {
-  const {prop1} = props;
+  const {prop1, prop2} = props;
 
   useEffect(() => {
     console.log("This useEffect is for prop1")
@@ -10,12 +10,12 @@ const Child = props => {
 
   useEffect(() => {
     console.log("This useEffect is for prop2")
-  }, [props.prop2])
+  }, [prop2])
 
   return (
     <View>
       <Text>{`prop1: ${prop1}`}</Text>
-      <Text>{`prop2: ${props.prop2}`}</Text>
+      <Text>{`prop2: ${prop2}`}</Text>
     </View>
   )
 }
@@ -54,7 +54,6 @@ const PropsExample = (props) => {
         <Text style={styles.conclusions}>Conclusions:</Text>
         <Text>- Child "props" are not updated until the Parent re-renders.</Text>
         <Text>- Hooks (e.g. useEffect/useState) always run in the same order.</Text>
-        <Text>- It doesn't matter whether "props" is destructured or not when used as a "hook dependency"</Text>
       </View>
     </View>
   );

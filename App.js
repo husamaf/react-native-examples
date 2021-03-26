@@ -3,13 +3,14 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import FunctionalComponentExample from './screens/FunctionalComponentExample'
 import ClassComponentExample from './screens/ClassComponentExample'
+import PropsDependencyExample from './screens/PropsDependencyExample'
 import PropsExample from './screens/PropsExample'
 
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <PropsExample />
+      <FunctionalComponentExample />
     </View>
   );
 }
