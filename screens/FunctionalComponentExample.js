@@ -19,21 +19,27 @@ const FunctionalComponentExample = (props) => {
 
   return (
     <View style={styles.root}>
-      <Text style={styles.title}>Testing variables with/without useRef in Functional Component</Text>
+      <Text style={styles.title}>Testing with a Functional Component</Text>
       <Text>{`This is a: ${a}`}</Text>
       <Text>{`This is b: ${b.current}`}</Text>
       <Text>{`This is toggleState: ${toggleState}`}</Text>
       <View style={styles.buttonContainer}>
-        <Button  title={'Press Me!'} onPress={buttonHandler}/>
+        <Button  title={'Increment & Update!'} onPress={buttonHandler}/>
+      </View>
+      <View>
+        <Text style={styles.conclusions}>Conclusions:</Text>
+        <Text>- "a" is always reset to 0 with every re-render.</Text>
+        <Text>- "b" uses "useRef" and so it does not reset to 0 with every re-render.</Text>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  root: {flex: 1, justifyContent: 'center', alignItems: 'center'},
-  title: {marginBottom: 80, textAlign: 'center', fontWeight: 'bold'},
-  buttonContainer: {marginTop: 80}
+  root: {flex: 1, padding: 20, justifyContent: 'center', alignItems: 'center'},
+  title: {marginBottom: 80, fontWeight: 'bold'},
+  buttonContainer: {height: 150, margin: 40, justifyContent: 'space-between'},
+  conclusions: {fontWeight: 'bold'}
 });
 
 export default FunctionalComponentExample;

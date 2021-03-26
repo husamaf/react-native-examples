@@ -22,7 +22,7 @@ const Child = props => {
 
 
 
-const PropsDependency = (props) => {
+const PropsExample = (props) => {
   const [toggleState, setToggleState] = useState(false);
 
   let prop1 = useRef(0);
@@ -46,18 +46,25 @@ const PropsDependency = (props) => {
       <Text style={styles.title}>Testing with "props"</Text>
       <Child prop1={prop1.current} prop2={prop2.current}/>
       <View style={styles.buttonContainer}>
-        <Button title={'Update prop1!'} onPress={buttonHandler1}/>
-        <Button title={'Update prop2!'} onPress={buttonHandler2} color={'red'}/>
+        <Button title={'Increment prop1!'} onPress={buttonHandler1}/>
+        <Button title={'Increment prop2!'} onPress={buttonHandler2} color={'red'}/>
         <Button title={'Update State'} onPress={buttonHandler3} color={'gray'}/>
+      </View>
+      <View>
+        <Text style={styles.conclusions}>Conclusions:</Text>
+        <Text>- Child "props" are not updated until the Parent re-renders.</Text>
+        <Text>- Hooks (e.g. useEffect/useState) always run in the same order.</Text>
+        <Text>- It doesn't matter whether "props" is destructured or not when used as a "hook dependency"</Text>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  root: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+  root: {flex: 1, padding: 20, justifyContent: 'center', alignItems: 'center'},
   title: {marginBottom: 80, fontWeight: 'bold'},
-  buttonContainer: {height: 150, marginTop: 80, justifyContent: 'space-between'}
+  buttonContainer: {height: 150, margin: 40, justifyContent: 'space-between'},
+  conclusions: {fontWeight: 'bold'}
 });
 
-export default PropsDependency;
+export default PropsExample;
