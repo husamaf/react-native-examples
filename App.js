@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import FunctionalComponent from './components/FunctionalComponent'
-import ClassComponent from './components/ClassComponent'
+import FunctionalComponent from './screens/FunctionalComponent'
+import ClassComponent from './screens/ClassComponent'
 
 export default function App() {
   return (

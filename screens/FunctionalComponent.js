@@ -5,8 +5,7 @@ const FunctionalComponent = (props) => {
   const [toggleState, setToggleState] = useState(false);
 
   let a = 0;
-  let b = 0;
-  let c = useRef(0)
+  let b = useRef(0);
 
   useEffect(() => {
     console.log("I just rendered!")
@@ -14,8 +13,7 @@ const FunctionalComponent = (props) => {
 
   const buttonHandler = () => {
     a += 1
-    b += 1
-    c.current += 1
+    b.current += 1
     setToggleState((prevState) => !prevState)
   }
 
@@ -23,8 +21,7 @@ const FunctionalComponent = (props) => {
     <View style={styles.root}>
       <Text style={styles.title}>This is a Functional Component</Text>
       <Text>{`This is a: ${a}`}</Text>
-      <Text>{`This is b: ${b}`}</Text>
-      <Text>{`This is c: ${c.current}`}</Text>
+      <Text>{`This is b: ${b.current}`}</Text>
       <Text>{`This is toggleState: ${toggleState}`}</Text>
       <View style={styles.buttonContainer}>
         <Button  title={'Press Me!'} onPress={buttonHandler}/>
