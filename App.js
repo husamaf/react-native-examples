@@ -5,12 +5,13 @@ import FunctionalComponentExample from './screens/FunctionalComponentExample'
 import ClassComponentExample from './screens/ClassComponentExample'
 import PropsDependencyExample from './screens/PropsDependencyExample'
 import PropsExample from './screens/PropsExample'
+import FlatListRerenderExample from './screens/FlatListRerenderExample'
 
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <FunctionalComponentExample />
+      <FlatListRerenderExample />
     </View>
   );
 }
