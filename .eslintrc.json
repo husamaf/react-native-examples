@@ -43,6 +43,7 @@
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
     "spaced-comment": "off",
     "one-var": "off",
-    "dot-notation": "off"
+    "dot-notation": "off",
+    "max-classes-per-file": "off"
   }
 }

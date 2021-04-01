@@ -5,13 +5,12 @@ import FunctionalComponentExample from './screens/FunctionalComponentExample';
 import ClassComponentExample from './screens/ClassComponentExample';
 import PropsDependencyExample from './screens/PropsDependencyExample';
 import PropsExample from './screens/PropsExample';
-import RefExample1 from './screens/RefExample1';
+import RefExample from './screens/RefExample';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <StatusBar style='auto' />
-      <RefExample1 />
+      <RefExample />
     </View>
   );
 }
