@@ -1,0 +1,48 @@
+{
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:prettier/recommended",
+    "prettier/react"],
+  "rules": {
+    "camelcase":"off",
+    "class-methods-use-this": "off",
+    "comma-dangle": "off",
+    "consistent-return": "off",
+    "func-names": "off",
+    "import/no-unresolved": "off", // Temporary fix
+    "no-console": "off",
+    "no-nested-ternary": "off",
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "no-process-exit": "off",
+    "no-return-await": "off",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": ["off", { "argsIgnorePattern": "req|res|next|val" }],
+    "no-use-before-define": "off",
+    "object-shorthand": "off",
+    "prefer-destructuring": ["off", { "object": false, "array": false }],
+    "prettier/prettier": "error",
+    "radix": ["error", "as-needed"],
+    "react/destructuring-assignment": "off",
+    "react/forbid-prop-types": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": 0,
+    "react/require-default-props": "off",
+    "react/style-prop-object": "off",
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "spaced-comment": "off",
+    "one-var": "off",
+    "dot-notation": "off"
+  }
+}
