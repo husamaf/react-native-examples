@@ -6,11 +6,12 @@ import ClassComponentExample from './screens/ClassComponentExample';
 import PropsDependencyExample from './screens/PropsDependencyExample';
 import PropsExample from './screens/PropsExample';
 import RefExample from './screens/RefExample';
+import FlatListWithGHExample from './screens/FlatListWithGHExample';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <RefExample />
+      <FlatListWithGHExample />
     </View>
   );
 }
