@@ -50,7 +50,7 @@ const ListItem = React.forwardRef((props, ref) => {
   );
 });
 
-const FlatListWithGHExample = props => {
+const GHExample1 = props => {
   const flatListRef = useRef();
   const childrenRefs = useRef({});
   myData.forEach(item => {
@@ -93,4 +93,4 @@ const styles = StyleSheet.create({
   conclusions: { fontWeight: 'bold' }
 });
 
-export default FlatListWithGHExample;
+export default GHExample1;
