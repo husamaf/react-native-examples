@@ -39,7 +39,8 @@ const ListItem = React.forwardRef((props, ref) => {
   return (
     <PanGestureHandler
       ref={ref}
-      simultaneousHandlers={props.parentRef}
+      activeOffsetY={1000}
+      // simultaneousHandlers={props.parentRef}
       onHandlerStateChange={stateChangeHandler}
     >
       <View style={styles.listItem}>
@@ -65,7 +66,7 @@ const FlatListWithGHExample = props => {
       <Text style={styles.title}>Testing with Gesture Handlers</Text>
       <FlatList
         ref={flatListRef}
-        simultaneousHandlers={myData.map(item => childrenRefs.current[item.key])}
+        // simultaneousHandlers={myData.map(item => childrenRefs.current[item.key])}
         style={styles.flatList}
         data={myData}
         renderItem={({ item }) => (
