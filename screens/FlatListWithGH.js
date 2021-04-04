@@ -50,7 +50,7 @@ const ListItem = React.forwardRef((props, ref) => {
   );
 });
 
-const GHExample1 = props => {
+const FlatListWithGH = props => {
   const flatListRef = useRef();
   const childrenRefs = useRef({});
   myData.forEach(item => {
@@ -61,10 +61,27 @@ const GHExample1 = props => {
     childrenRefs.current['1'].current.print();
   });
 
+  const stateChangeHandler = event => {
+    if (event.nativeEvent.state === State.UNDETERMINED) {
+      console.log(`outer UNDETERMINED`);
+    } else if (event.nativeEvent.state === State.FAILED) {
+      console.log(`outer FAILED`);
+    } else if (event.nativeEvent.state === State.BEGAN) {
+      console.log(`outer BEGAN`);
+    } else if (event.nativeEvent.state === State.CANCELLED) {
+      console.log(`outer CANCELLED`);
+    } else if (event.nativeEvent.state === State.ACTIVE) {
+      console.log(`outer ACTIVE`);
+    } else if (event.nativeEvent.state === State.END) {
+      console.log(`outer END`);
+    }
+  };
+
   return (
     <View style={styles.root}>
       <Text style={styles.title}>Testing with Gesture Handlers</Text>
       <FlatList
+        onHandlerStateChange={stateChangeHandler}
         ref={flatListRef}
         // simultaneousHandlers={myData.map(item => childrenRefs.current[item.key])}
         style={styles.flatList}
@@ -93,4 +110,4 @@ const styles = StyleSheet.create({
   conclusions: { fontWeight: 'bold' }
 });
 
-export default GHExample1;
+export default FlatListWithGH;
