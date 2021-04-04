@@ -38,7 +38,10 @@ class ClassComponentExample extends React.Component {
         </View>
         <View>
           <Text style={styles.conclusions}>Conclusions:</Text>
-          <Text>{'- Instance variables in a Class Component (e.g. "a" & "b") are NOT reset to 0 with every re-render.'}</Text>
+          <Text>
+            - Instance variables in a Class Component (e.g. a & b) are NOT reset to 0 with
+            every re-render.
+          </Text>
         </View>
       </View>
     );
