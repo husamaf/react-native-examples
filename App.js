@@ -7,11 +7,12 @@ import PropsDependencyExample from './screens/PropsDependencyExample';
 import PropsExample from './screens/PropsExample';
 import RefExample from './screens/RefExample';
 import GHExample1 from './screens/GHExample1';
+import NestedFlatListsExample from './screens/NestedFlatListsExample';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <GHExample1 />
+      <NestedFlatListsExample />
     </View>
   );
 }
