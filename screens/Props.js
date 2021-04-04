@@ -20,7 +20,7 @@ const Child = props => {
   );
 };
 
-const PropsExample = props => {
+const Props = props => {
   const [toggleState, setToggleState] = useState(false);
 
   const prop1 = useRef(0);
@@ -65,4 +65,4 @@ const styles = StyleSheet.create({
   conclusions: { fontWeight: 'bold' }
 });
 
-export default PropsExample;
+export default Props;

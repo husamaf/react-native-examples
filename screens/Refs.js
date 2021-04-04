@@ -27,7 +27,7 @@ class Child2 extends React.Component {
   }
 }
 
-const RefExample = props => {
+const Refs = props => {
   const refToChild1 = useRef();
   const refToChild2 = useRef();
 
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
   conclusions: { fontWeight: 'bold' }
 });
 
-export default RefExample;
+export default Refs;

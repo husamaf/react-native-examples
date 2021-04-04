@@ -1,18 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import FunctionalComponentExample from './screens/FunctionalComponentExample';
-import ClassComponentExample from './screens/ClassComponentExample';
-import PropsDependencyExample from './screens/PropsDependencyExample';
-import PropsExample from './screens/PropsExample';
-import RefExample from './screens/RefExample';
+import FunctionalComponent from './screens/FunctionalComponent';
+import ClassComponent from './screens/ClassComponent';
+import PropsAsDependency from './screens/PropsAsDependency';
+import Props from './screens/Props';
+import Refs from './screens/Refs';
 import FlatListWithGH from './screens/FlatListWithGH';
-import NestedFlatListsExample from './screens/NestedFlatListsExample';
+import NestedFlatLists from './screens/NestedFlatLists';
+import ActiveOffset from './screens/ActiveOffset';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <FlatListWithGH />
+      <ActiveOffset />
     </View>
   );
 }

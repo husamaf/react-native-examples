@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
-class ClassComponentExample extends React.Component {
+class ClassComponent extends React.Component {
   b = 0;
 
   constructor(props) {
@@ -55,4 +55,4 @@ const styles = StyleSheet.create({
   conclusions: { fontWeight: 'bold' }
 });
 
-export default ClassComponentExample;
+export default ClassComponent;

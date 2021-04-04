@@ -81,7 +81,7 @@ const OuterList = props => {
   );
 };
 
-const NestedFlatListsExample = props => {
+const NestedFlatLists = props => {
   return (
     <View style={styles.root}>
       <Text style={styles.title}>Testing with Gesture Handlers</Text>
@@ -113,4 +113,4 @@ const styles = StyleSheet.create({
   conclusions: { fontWeight: 'bold' }
 });
 
-export default NestedFlatListsExample;
+export default NestedFlatLists;

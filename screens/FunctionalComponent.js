@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
-const FunctionalComponentExample = props => {
+const FunctionalComponent = props => {
   const [toggleState, setToggleState] = useState(false);
 
   let a = 0;
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
   conclusions: { fontWeight: 'bold' }
 });
 
-export default FunctionalComponentExample;
+export default FunctionalComponent;
