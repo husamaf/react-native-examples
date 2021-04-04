@@ -6,7 +6,6 @@ import ClassComponent from './screens/ClassComponent';
 import PropsAsDependency from './screens/PropsAsDependency';
 import Props from './screens/Props';
 import Refs from './screens/Refs';
-import FlatListWithGH from './screens/FlatListWithGH';
 import NestedFlatLists from './screens/NestedFlatLists';
 import ActiveOffset from './screens/ActiveOffset';
 
