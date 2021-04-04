@@ -90,8 +90,8 @@ const NestedFlatListsExample = props => {
         <Text style={styles.conclusions}>Conclusions:</Text>
         <Text>
           {'- Nested FlatLists can co-exist WITHOUT needing "simultaneousHandlers".\n' +
-            '- When pressed, both inner and outer FlatList are set to "BEGAN".\n' +
-            '- Inner FlatList always triggers first.\n\n' +
+            '- I think FlatLists use "activeOffsetX/activeOffsetY" under the hood.\n\n' +
+            '- When pressed, both inner and outer FlatList are set to "BEGAN". Inner FlatList always triggers first.\n\n' +
             '- If both lists are vertical:\n' +
             '   - Vertical swiping causes the child to become "ACTIVE" and cancel the parent.\n' +
             '   - Horizontal swiping does nothing.\n\n' +
