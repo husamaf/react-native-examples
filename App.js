@@ -8,11 +8,12 @@ import Props from './screens/Props';
 import Refs from './screens/Refs';
 import NestedFlatLists from './screens/NestedFlatLists';
 import ActiveOffset from './screens/ActiveOffset';
+import CRC from './screens/CRC';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <ActiveOffset />
+      <CRC />
     </View>
   );
 }
