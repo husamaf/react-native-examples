@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, Button, FlatList } from 'react-native';
 
-const HellWorld = props => {
+const ListItem = props => {
   return (
     <View
       style={styles.listItem}
@@ -23,7 +23,7 @@ const renderItemHandler = renderProps => {
       console.log(i);
     });
   }
-  return <HellWorld title={renderProps.item.title} />;
+  return <ListItem title={renderProps.item.title} />;
 };
 
 const cellRendererComponentHandler = cellProps => {
@@ -33,7 +33,7 @@ const cellRendererComponentHandler = cellProps => {
       console.log(i);
     });
   }
-  return <HellWorld title={cellProps.item.title} />;
+  return <ListItem title={cellProps.item.title} />;
 };
 
 const listItems = [
