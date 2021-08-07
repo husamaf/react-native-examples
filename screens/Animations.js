@@ -1,30 +1,95 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import Animated from 'react-native-reanimated';
+import { TouchableOpacity, State, TapGestureHandler } from 'react-native-gesture-handler';
+import Animated, { Easing } from 'react-native-reanimated';
 
-const { cond, Value } = Animated;
+const {
+  cond,
+  Value,
+  Clock,
+  startClock,
+  stopClock,
+  clockRunning,
+  timing,
+  set,
+  event,
+  call,
+  eq,
+  block
+} = Animated;
 
-const Item = props => {
+const getAnimation = () => {
+  const clock = new Clock();
+
+  const state = {
+    finished: new Value(0),
+    position: new Value(0),
+    frameTime: new Value(0),
+    time: new Value(0)
+  };
+
+  const config = { toValue: 200, duration: 2000, easing: Easing.inOut };
+  return [
+    cond(clockRunning(clock), 0, [
+      set(state.finished, 0),
+      set(state.position, 0),
+      set(state.frameTime, 0),
+      set(state.time, 0),
+      startClock(clock)
+    ]),
+    timing(clock, state, config),
+    cond(state.finished, stopClock(clock)),
+    state.position
+  ];
+};
+
+const Item = ({ style }) => {
   return (
-    <View style={styles.item}>
+    <Animated.View style={style}>
       <Text style={{ textAlign: 'center' }}>Animated View</Text>
-    </View>
+    </Animated.View>
   );
 };
 
 const Animations = props => {
+  const gestureState = useRef(new Value(State.UNDETERMINED));
+  const onHandlerStateChange = useRef(
+    event(
+      [
+        {
+          nativeEvent: {
+            state: gestureState.current
+          }
+        }
+      ],
+      { useNativeDriver: true }
+    )
+  );
+  const translation = useRef(new Value(0));
+  const translate = cond(
+    eq(gestureState.current, State.END),
+    [set(translation.current, 50), translation.current],
+    translation.current
+  );
+
   return (
     <View style={styles.root}>
       <Text style={styles.title}>Animations</Text>
-      <Item />
-      <TouchableOpacity style={styles.button} onPress={() => console.log('HELLO')}>
-        <Text>Press Me!</Text>
-      </TouchableOpacity>
+      <Item style={{ ...styles.item, transform: [{ translateX: translate }] }} />
+      <View style={styles.button}>
+        <TapGestureHandler onHandlerStateChange={onHandlerStateChange.current}>
+          <Animated.View>
+            <Text>Press Me!</Text>
+          </Animated.View>
+        </TapGestureHandler>
+      </View>
       <View style={styles.conclusions}>
         <Text style={styles.conclusionsText}>Conclusions:</Text>
         <Text>Add text here</Text>
       </View>
+      <Animated.Code>
+        {() => call([gestureState.current], ([state]) => console.log(state))}
+      </Animated.Code>
     </View>
   );
 };
