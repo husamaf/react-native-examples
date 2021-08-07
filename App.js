@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, StatusBar, View } from 'react-native';
 import FunctionalComponent from './screens/FunctionalComponent';
 import ClassComponent from './screens/ClassComponent';
 import PropsAsDependency from './screens/PropsAsDependency';
@@ -9,11 +8,13 @@ import Refs from './screens/Refs';
 import NestedFlatLists from './screens/NestedFlatLists';
 import ActiveOffset from './screens/ActiveOffset';
 import CRC from './screens/CRC';
+import Animations from './screens/Animations';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <CRC />
+      <StatusBar />
+      <Animations />
     </View>
   );
 }
