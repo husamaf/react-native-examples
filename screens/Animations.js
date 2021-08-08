@@ -1,7 +1,21 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { TouchableOpacity, State, TapGestureHandler } from 'react-native-gesture-handler';
+import {
+  TouchableOpacity,
+  State,
+  TapGestureHandler,
+  BaseButton,
+  RectButton
+} from 'react-native-gesture-handler';
 import Animated, { Easing } from 'react-native-reanimated';
+import {
+  withTimingTransition,
+  useClock,
+  useValue,
+  mix,
+  useGestureHandler,
+  useTimingTransition
+} from 'react-native-redash';
 
 const {
   cond,
@@ -58,32 +72,21 @@ const Item = ({ style }) => {
 };
 
 const Animations = props => {
-  const gestureState = useRef(new Value(State.UNDETERMINED));
-  const onHandlerStateChange = useRef(
-    event(
-      [
-        {
-          nativeEvent: {
-            state: gestureState.current
-          }
-        }
-      ],
-      { useNativeDriver: true }
-    )
-  );
-  const translate = cond(eq(gestureState.current, State.END), runTiming());
+  const [position, setPosition] = useState(0);
+  const translate = useTimingTransition(position, {
+    duration: 2000,
+    easing: Easing.inOut(Easing.ease)
+  });
 
   return (
     <View style={styles.root}>
       <Text style={styles.title}>Animations</Text>
       <Item style={{ ...styles.item, transform: [{ translateY: translate }] }} />
-      <View style={styles.button}>
-        <TapGestureHandler onHandlerStateChange={onHandlerStateChange.current}>
-          <Animated.View>
-            <Text>Press Me!</Text>
-          </Animated.View>
-        </TapGestureHandler>
-      </View>
+      <TouchableOpacity onPress={() => setPosition(prev => prev + 50)}>
+        <Animated.View style={styles.button}>
+          <Text>Press Me!</Text>
+        </Animated.View>
+      </TouchableOpacity>
       <View style={styles.conclusions}>
         <Text style={styles.conclusionsText}>Conclusions:</Text>
         <Text>Add text here</Text>
