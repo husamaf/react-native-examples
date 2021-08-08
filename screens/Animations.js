@@ -15,12 +15,12 @@ const {
   event,
   call,
   eq,
-  block
+  block,
+  spring
 } = Animated;
 
-const getAnimation = () => {
-  const clock = new Clock();
-
+const runTiming = () => {
+  const myClock = new Clock();
   const state = {
     finished: new Value(0),
     position: new Value(0),
@@ -28,17 +28,22 @@ const getAnimation = () => {
     time: new Value(0)
   };
 
-  const config = { toValue: 200, duration: 2000, easing: Easing.inOut };
+  const config = {
+    toValue: new Value(100),
+    duration: 3000,
+    easing: Easing.inOut(Easing.ease)
+  };
   return [
-    cond(clockRunning(clock), 0, [
+    cond(clockRunning(myClock), 0, [
       set(state.finished, 0),
       set(state.position, 0),
       set(state.frameTime, 0),
       set(state.time, 0),
-      startClock(clock)
+      set(config.toValue, 100),
+      startClock(myClock)
     ]),
-    timing(clock, state, config),
-    cond(state.finished, stopClock(clock)),
+    timing(myClock, state, config),
+    cond(state.finished, stopClock(myClock)),
     state.position
   ];
 };
@@ -68,7 +73,7 @@ const Animations = props => {
   const translation = useRef(new Value(0));
   const translate = cond(
     eq(gestureState.current, State.END),
-    [set(translation.current, 50), translation.current],
+    [set(translation.current, runTiming()), translation.current],
     translation.current
   );
 
@@ -88,7 +93,7 @@ const Animations = props => {
         <Text>Add text here</Text>
       </View>
       <Animated.Code>
-        {() => call([gestureState.current], ([state]) => console.log(state))}
+        {() => call([translate], ([state]) => console.log(state))}
       </Animated.Code>
     </View>
   );
