@@ -30,7 +30,7 @@ const runTiming = () => {
 
   const config = {
     toValue: new Value(100),
-    duration: 3000,
+    duration: new Value(3000),
     easing: Easing.inOut(Easing.ease)
   };
   return [
@@ -39,6 +39,7 @@ const runTiming = () => {
       set(state.position, 0),
       set(state.frameTime, 0),
       set(state.time, 0),
+      set(config.duration, 1000),
       set(config.toValue, 100),
       startClock(myClock)
     ]),
@@ -70,17 +71,12 @@ const Animations = props => {
       { useNativeDriver: true }
     )
   );
-  const translation = useRef(new Value(0));
-  const translate = cond(
-    eq(gestureState.current, State.END),
-    [set(translation.current, runTiming()), translation.current],
-    translation.current
-  );
+  const translate = cond(eq(gestureState.current, State.END), runTiming());
 
   return (
     <View style={styles.root}>
       <Text style={styles.title}>Animations</Text>
-      <Item style={{ ...styles.item, transform: [{ translateX: translate }] }} />
+      <Item style={{ ...styles.item, transform: [{ translateY: translate }] }} />
       <View style={styles.button}>
         <TapGestureHandler onHandlerStateChange={onHandlerStateChange.current}>
           <Animated.View>
