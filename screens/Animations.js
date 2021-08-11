@@ -72,28 +72,84 @@ const Item = ({ style }) => {
 };
 
 const Animations = props => {
-  const [position, setPosition] = useState(0);
-  const translate = useTimingTransition(position, {
-    duration: 2000,
-    easing: Easing.inOut(Easing.ease)
+  const [toggle, setToggle] = useState(false);
+  const initialX = useRef(new Value(200)).current;
+  const initialY = useRef(new Value(200)).current;
+  const [finalX, setFinalX] = useState(0);
+  const [finalY, setFinalY] = useState(0);
+  const transition = useTimingTransition(toggle, {
+    duration: 500,
+    easing: Easing.elastic()
   });
+  const translateX = mix(transition, 0, finalX);
+  const translateY = mix(transition, 0, finalY);
 
   return (
     <View style={styles.root}>
       <Text style={styles.title}>Animations</Text>
-      <Item style={{ ...styles.item, transform: [{ translateY: translate }] }} />
-      <TouchableOpacity onPress={() => setPosition(prev => prev + 50)}>
+      <Item style={{ ...styles.item, transform: [{ translateY, translateX }] }} />
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity
+          onPress={() => {
+            setFinalX(-200);
+            setFinalY(0);
+            setToggle(true);
+          }}
+        >
+          <Animated.View style={styles.button}>
+            <Text>Left</Text>
+          </Animated.View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            setFinalX(0);
+            setFinalY(-200);
+            setToggle(true);
+          }}
+        >
+          <Animated.View style={styles.button}>
+            <Text>Top</Text>
+          </Animated.View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            setFinalX(200);
+            setFinalY(0);
+            setToggle(true);
+          }}
+        >
+          <Animated.View style={styles.button}>
+            <Text>Right</Text>
+          </Animated.View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            setFinalX(0);
+            setFinalY(200);
+            setToggle(true);
+          }}
+        >
+          <Animated.View style={styles.button}>
+            <Text>Bottom</Text>
+          </Animated.View>
+        </TouchableOpacity>
+      </View>
+      <TouchableOpacity
+        onPress={() => {
+          setToggle(false);
+        }}
+      >
         <Animated.View style={styles.button}>
-          <Text>Press Me!</Text>
+          <Text>Undo</Text>
         </Animated.View>
       </TouchableOpacity>
       <View style={styles.conclusions}>
         <Text style={styles.conclusionsText}>Conclusions:</Text>
         <Text>Add text here</Text>
       </View>
-      <Animated.Code>
+      {/* <Animated.Code>
         {() => call([translate], ([state]) => console.log(state))}
-      </Animated.Code>
+      </Animated.Code> */}
     </View>
   );
 };
@@ -108,7 +164,10 @@ const styles = StyleSheet.create({
     padding: 5,
     backgroundColor: 'yellow'
   },
-  button: { borderRadius: 20, margin: 50, padding: 10, backgroundColor: 'orange' },
+  buttonsContainer: {
+    flexDirection: 'row'
+  },
+  button: { borderRadius: 20, margin: 8, padding: 10, backgroundColor: 'orange' },
   conclusions: { margin: 50 },
   conclusionsText: { fontWeight: 'bold' }
 });
