@@ -71,6 +71,9 @@ const Item = ({ style }) => {
   );
 };
 
+const outOfScreenX = 250;
+const outOfScreenY = 250;
+
 const Animations = props => {
   const [toggle, setToggle] = useState(false);
   const initialX = useRef(new Value(200)).current;
@@ -78,8 +81,7 @@ const Animations = props => {
   const [finalX, setFinalX] = useState(0);
   const [finalY, setFinalY] = useState(0);
   const transition = useTimingTransition(toggle, {
-    duration: 500,
-    easing: Easing.elastic()
+    easing: Easing.inOut(Easing.ease)
   });
   const translateX = mix(transition, 0, finalX);
   const translateY = mix(transition, 0, finalY);
@@ -91,7 +93,7 @@ const Animations = props => {
       <View style={styles.buttonsContainer}>
         <TouchableOpacity
           onPress={() => {
-            setFinalX(-200);
+            setFinalX(-outOfScreenX);
             setFinalY(0);
             setToggle(true);
           }}
@@ -103,7 +105,7 @@ const Animations = props => {
         <TouchableOpacity
           onPress={() => {
             setFinalX(0);
-            setFinalY(-200);
+            setFinalY(-outOfScreenY);
             setToggle(true);
           }}
         >
@@ -113,7 +115,7 @@ const Animations = props => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            setFinalX(200);
+            setFinalX(outOfScreenX);
             setFinalY(0);
             setToggle(true);
           }}
@@ -125,7 +127,7 @@ const Animations = props => {
         <TouchableOpacity
           onPress={() => {
             setFinalX(0);
-            setFinalY(200);
+            setFinalY(outOfScreenY);
             setToggle(true);
           }}
         >
